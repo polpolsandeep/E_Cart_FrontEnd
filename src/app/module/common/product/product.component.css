@@ -1,0 +1,13 @@
+.product{
+    border: thin solid red;
+    height: 20rem;
+}
+.product img{
+    height: 12rem;
+}
+h4{
+    font-size: 1rem;
+}
+.card-text{
+    font-size: 1rem;
+}

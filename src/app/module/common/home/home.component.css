@@ -1,0 +1,72 @@
+.header{
+    height: 60px;
+}
+.logo img{
+    height: 60px;
+    width: 50%;
+    background: #fff;
+    border-radius: 50% solid;
+}
+.login-btn{
+    margin-top: 0.8%;
+}
+.signin-btn button{
+    width: 100%;
+}
+.cart div{
+    width: 50px;
+    height: 45px;
+    border: solid thin red;
+}
+.cart span{
+    position: absolute;
+    transform: translate(140%,-180%);
+}
+.main-body{
+    background-color: green;
+    min-height: 100vh;
+    height: 100%;
+    max-height: auto;
+}
+.main-body .left-menu{
+    background-color: #f98;
+    /* height: 100vh; */
+    padding: 5% 0px;
+}
+.main-body .products{
+    background-color: rgba(189, 186, 22, 0.267);
+    /* height: 100vh; */
+    padding: 2% 2%;
+}
+.main-body .products > div{
+    float: left;
+    width: 50%;
+    padding: 2rem;
+}
+.main-body .ads{
+    background-color: rgba(204, 61, 4, 0.822);
+    /* height: 100vh; */
+    padding: 5% 0px;
+}
+.footer{
+    padding: 2% 0px;
+    background-color: #000;
+    color: #fff;
+}
+.list-group-item .cat_name{
+    width: 100%;
+}
+.list-group-item .cat_name .fa-solid{
+    float: right;
+    color: #000;
+}
+li{
+    cursor: pointer;
+}
+.text-truncate{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    
+
+}

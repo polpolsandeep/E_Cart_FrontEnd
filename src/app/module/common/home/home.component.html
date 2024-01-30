@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row header">
+        <div class="col-2 logo">
+            <img src="assets/icon/shopping-cart-3.webp" alt="e-cart_logo">
+        </div>
+        <div class="col-6 search login-btn">
+            <input type="text" placeholder="Enter Category or Product Name.." class="form-control">
+        </div>
+        <div class="col-2 signin-btn login-btn">
+            <button class="btn btn-primary">SignIn</button>
+        </div>
+        <div class="col-2 cart login-btn">
+            <div></div>
+            <span class="badge bg-danger">4</span>
+        </div>
+    </div>
+    <div class="row main-body">
+       <div class="col-2 left-menu">
+        <ul class="text-group" *ngFor="let mainCat of mainCategories; let i=index">
+           <li  class="list-group-item d-flex" (click)="changeArrow(mainCat)" data-bs-toggle="collapse" [attr.data-bs-target]="'#category'+i">
+            <span class="cat_name text-truncate" [innerHTML]="mainCat.catName"></span>
+            <span class="badge material-symbols-outlined">{{(mainCat.isCollapse===true)?'fa-solid fa-caret-down':'fa-solid fa-caret-right'}}</span>
+            <i class="fa-solid fa-caret-right"></i>
+            </li>
+            <ul class="text-group collapse hide" [id]="'category'+i">
+                <li  class="list-group-item" *ngFor="let cat of mainCat.categoryList">
+                 <span [innerHTML]="cat.catName" class="cat_name">fa-solid fa-caret-right</span>
+                 <!-- <i class="fa-solid fa-caret-right"></i> -->
+                 </li>
+             </ul>
+        </ul>
+       </div>
+       <div class="col-8 products">
+        <div *ngFor="let product of products">
+          <app-product [product1]="product"></app-product>
+        </div>
+       </div>
+       <div class="col-2 ads">
+        Right
+       </div>
+    </div>
+    <div class="row footer">
+        <div class="text-center"><strong>&copy;CopyRight All Rights Reserved 2024</strong></div>
+    </div>
+</div>
