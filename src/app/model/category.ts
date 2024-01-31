@@ -1,3 +1,5 @@
+import { SubCategory } from "./subcategory";
+
 export interface category{
     catId:number,
     catName:string,
@@ -5,5 +7,8 @@ export interface category{
     catImage:string,
     imageName:string,
     status:string,
-    mainCatId:number
+    mainCatId:number,
+    subCatList:SubCategory[],
+    cssClass:string,
+    isCollapse:boolean
 }

@@ -22,11 +22,16 @@
             <span class="badge material-symbols-outlined">{{(mainCat.isCollapse===true)?'fa-solid fa-caret-down':'fa-solid fa-caret-right'}}</span>
             <i class="fa-solid fa-caret-right"></i>
             </li>
-            <ul class="text-group collapse hide" [id]="'category'+i">
-                <li  class="list-group-item" *ngFor="let cat of mainCat.categoryList">
-                 <span [innerHTML]="cat.catName" class="cat_name">fa-solid fa-caret-right</span>
+            <ul class="list-group collapse hide" [id]="'category'+i" *ngFor="let cat of mainCat.categoryList;let j=index">
+                <li  class="list-group-item" (click)="changeCatArrow(cat)" data-bs-toggle="collapse" [attr.data-bs-target]="'#subcategory'+j">
+                 <span [innerHTML]="cat.catName" class="cat_name">{{(cat.isCollapse===true)?'fa-solid fa-caret-down':'fa-solid fa-caret-right'}}</span>
                  <!-- <i class="fa-solid fa-caret-right"></i> -->
                  </li>
+                 <ul [class]="cat.cssClass" *ngFor="let subCat of cat.subCatList">
+                    <li class="list-group-item hide" [id]="'subCategory'+i">
+                        <span [innerHTML]="subCat.catName" class="cat_name">fa-solid fa-caret-right</span>
+                    </li>
+                 </ul>
              </ul>
         </ul>
        </div>

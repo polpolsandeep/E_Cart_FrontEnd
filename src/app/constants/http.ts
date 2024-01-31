@@ -2,7 +2,8 @@ export const APPURL='http://localhost:8083';
 
 export const SERVICES ={
     MAIN_CAT:"/main-category",
-    CAT:"/category"
+    CAT:"/category",
+    SUB_CAT:"/sub_category"
 }
 
 export const ENDPOINTS={

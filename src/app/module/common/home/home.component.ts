@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { category } from 'src/app/model/category';
 import { MainCategory } from 'src/app/model/maincategory';
 import { Product } from 'src/app/model/product';
 import { CategoryService } from 'src/app/service/category.service';
 import { MaincategoryService } from 'src/app/service/maincategory.service';
+import { SubcategoryService } from 'src/app/service/subcategory.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +13,7 @@ import { MaincategoryService } from 'src/app/service/maincategory.service';
 })
 export class HomeComponent implements OnInit{
 
-  constructor(private mainCatService:MaincategoryService,private categoryService:CategoryService){}
+  constructor(private mainCatService:MaincategoryService,private categoryService:CategoryService,private subCategoryService:SubcategoryService){}
 
   mainCategories:MainCategory[]=[];
 
@@ -86,12 +88,28 @@ export class HomeComponent implements OnInit{
     this.categoryService.getCategoryByMainCatId(mainCategory.maincatId).subscribe((response:any)=>{
       if(response.success === true){
         mainCategory.categoryList = response.data;
+        mainCategory.categoryList.filter((category:category)=>{
+          category.cssClass='list-group collapse hide';
+          this.getSubCategoryByCatId(category);
+        })
       }
     });
+  }
+  getSubCategoryByCatId(category: category){
+    this.subCategoryService.getSubCategoriesByCatId(category.catId).subscribe((response:any)=>{
+      if(response.success === true){
+        category.subCatList=response.data;
+      }
+    })
   }
   changeArrow(mainCat:MainCategory){
     // this.arrowName=(mainCat.isCollapse===true)?'fa-solid fa-caret-down':'fa-solid fa-caret-right';
     mainCat.isCollapse = !this.isCollapse;
+  }
+  changeCatArrow(cat:category){
+    cat.isCollapse=!cat.isCollapse;
+    cat.cssClass=cat.isCollapse?'list-group collapse show':'list-group collapse hide';
+
   }
 
 }
